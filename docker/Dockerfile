@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y \
     cmake \
     make libbz2-dev libexpat1-dev swig python-dev
 RUN add-apt-repository -y ppa:ubuntugis/ppa && apt-get -q update
-RUN apt-get -y install gdal-bin libgdal-dev
+RUN apt-get -y install gdal-bin libgdal-dev python-pip
 RUN mkdir -p /fmm
 COPY . /fmm
 WORKDIR /fmm
@@ -17,4 +17,7 @@ RUN mkdir -p build && \
 EXPOSE 8080
 ENV PATH /fmm/build:$PATH
 ENV PYTHONPATH /fmm/build/python:$PYTHONPATH
+RUN python -m pip install tornado==5.1.1
+RUN python -m pip install flask
+RUN python -m pip install numpy==1.8.0
 CMD

@@ -26,6 +26,8 @@ ${PROJECT_SOURCE_DIR}/src/mm/stmatch/stmatch_algorithm.cpp)
 add_library(PYTHONFMM_OBJ OBJECT ${PYTHONFMMGlob})
 add_library(PYTHONSTMATCH_OBJ OBJECT ${PYTHONSTMATCHGlob})
 
+message(STATUS "current PROJECT_SOURCE_DIR ${PROJECT_SOURCE_DIR}")
+
 set_source_files_properties(
 ${PROJECT_SOURCE_DIR}/python/fmm.i PROPERTIES CPLUSPLUS ON)
 set_source_files_properties(
