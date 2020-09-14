@@ -39,8 +39,6 @@ class MyTCPHandler(SocketServer.StreamRequestHandler):
         else:
             print "Not matched"
             self.request.sendall(json.dumps({"state": 0}))
-        # just send back the same data, but upper-cased
-        self.request.sendall(self.data.upper())
 
 if __name__ == "__main__":
 
