@@ -6,7 +6,7 @@ import optparse
 import logging
 from flask import jsonify
 
-class MyTCPHandler(SocketServer.BaseRequestHandler):
+class MyTCPHandler(SocketServer.StreamRequestHandler):
     """
     The request handler class for our server.
 
@@ -17,7 +17,7 @@ class MyTCPHandler(SocketServer.BaseRequestHandler):
 
     def handle(self):
         # self.request is the TCP socket connected to the client
-        wkt = self.request.recv(1024).strip()
+        wkt = self.rfile.readline().strip()
         print "{} wrote:".format(self.client_address[0])
         print wkt
         logging.info('WKT get in python: %s', wkt)
