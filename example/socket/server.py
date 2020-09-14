@@ -60,7 +60,7 @@ if __name__ == "__main__":
         type='string', default="config.json")
     opts, args = parser.parse_args()
 
-    HOST, PORT = "localhost", opts.port
+    HOST, PORT = "0.0.0.0", opts.port
     # Create the server, binding to localhost on port 9999
     server = SocketServer.TCPServer((HOST, PORT), MyTCPHandler)
 
