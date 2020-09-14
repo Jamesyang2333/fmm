@@ -20,4 +20,4 @@ ENV PYTHONPATH /fmm/build/python:$PYTHONPATH
 RUN python -m pip install tornado==5.1.1
 RUN python -m pip install flask
 RUN python -m pip install numpy==1.8.0
-CMD
+CMD python /fmm/example/socket/server.py -c stmatch_config.json

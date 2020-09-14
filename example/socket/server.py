@@ -4,7 +4,7 @@ import os
 import time
 import optparse
 import logging
-from flask import jsonify
+import json
 
 class MyTCPHandler(SocketServer.StreamRequestHandler):
     """
@@ -34,11 +34,11 @@ class MyTCPHandler(SocketServer.StreamRequestHandler):
         # print "Result geom is ",result.mgeom
         if (mgeom_wkt != ""):
             print "Matched"
-            response_json = {"wkt": mgeom_wkt, "state": 1}
-            self.request.sendall(jsonify(response_json))
+            response_json = {"wkt": mgeom_wkt, "Opath": list(result.opath), "Cpath": list(result.cpath), "state": 1}
+            self.request.sendall(json.dumps(response_json))
         else:
             print "Not matched"
-            self.request.sendall(jsonify({"state": 0}))
+            self.request.sendall(json.dumps({"state": 0}))
         # just send back the same data, but upper-cased
         self.request.sendall(self.data.upper())
 
