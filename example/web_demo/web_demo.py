@@ -30,6 +30,7 @@ def index():
 def match_url():
     # print(flask.request.args)
     wkt = str(flask.request.args.get('wkt', ''))
+    print(wkt)
     logging.info('WKT get in python: %s', wkt)
     starttime = time.time()
     result = app.mapmatcher.match_wkt(wkt)
@@ -53,7 +54,7 @@ def match_url():
 def start_tornado(app, port=5000):
     http_server = tornado.httpserver.HTTPServer(
         tornado.wsgi.WSGIContainer(app))
-    http_server.listen(port)
+    http_server.listen(port, '0.0.0.0')
     print("Tornado server starting on port {}".format(port))
     print("Visit http://localhost:{}/demo to check the demo".format(port))
     tornado.ioloop.IOLoop.instance().start()

@@ -72,9 +72,15 @@ class MapMatcher(object):
             raise Exception(
                 "File for {} is missing.".format(config_json_file))
         config = MapMatcherConfig(config_json_file)
+        print("loading network")
+        print(config.network_id)
+        print(config.network_source)
+        print(config.network_target)
         self.network = Network(
             config.network_file,config.network_id,
             config.network_source,config.network_target)
+        # self.network = Network(
+        #     config.network_file)
         self.graph = NetworkGraph(
             self.network)
         if config.model_tag=="stmatch":

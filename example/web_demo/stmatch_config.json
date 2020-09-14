@@ -1,14 +1,16 @@
 {
   "input": {
     "network": {
-      "file": "network.shp",
-      "id": "ID"
+      "file": "../data/harbin.tmp/edges.shp",
+      "id": "fid",
+      "source": "u",
+      "target": "v"
     }
   },
   "model": "stmatch",
   "parameters": {
-    "k": 32,
-    "r": 0.01,
-    "e": 0.003
+    "k": 4,
+    "r": 0.4,
+    "e": 0.5
   }
 }
