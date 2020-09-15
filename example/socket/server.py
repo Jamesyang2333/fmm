@@ -18,9 +18,9 @@ class MyTCPHandler(SocketServer.StreamRequestHandler):
     def handle(self):
         # self.request is the TCP socket connected to the client
         wkt = self.rfile.readline().strip()
-        print "{} wrote:".format(self.client_address[0])
-        print wkt
-        logging.info('WKT get in python: %s', wkt)
+        # print "{} wrote:".format(self.client_address[0])
+        # print wkt
+        # logging.info('WKT get in python: %s', wkt)
         starttime = time.time()
         result = self.server.mapmatcher.match_wkt(wkt)
         mgeom_wkt = ""
@@ -33,11 +33,11 @@ class MyTCPHandler(SocketServer.StreamRequestHandler):
         # print "Result is ",result
         # print "Result geom is ",result.mgeom
         if (mgeom_wkt != ""):
-            print "Matched"
+            # print "Matched"
             response_json = {"wkt": mgeom_wkt, "Opath": list(result.opath), "Cpath": list(result.cpath), "state": 1}
             self.request.sendall(json.dumps(response_json))
         else:
-            print "Not matched"
+            # print "Not matched"
             self.request.sendall(json.dumps({"state": 0}))
 
 if __name__ == "__main__":
