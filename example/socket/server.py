@@ -29,6 +29,8 @@ class MyTCPHandler(SocketServer.StreamRequestHandler):
         pgeom_wkt = ""
         if (result.pgeom.get_num_points() > 0):
             pgeom_wkt = result.pgeom.export_wkt()
+        offset = [c.offset for c in result.candidates]
+        spdist = [c.spdist for c in result.candidates]
         # logging.info('Probs %s',probs)
         endtime = time.time()
         # logging.info('%s', result)
@@ -37,7 +39,7 @@ class MyTCPHandler(SocketServer.StreamRequestHandler):
         # print "Result geom is ",result.mgeom
         if (mgeom_wkt != ""):
             # print "Matched"
-            response_json = {"mgeom_wkt": mgeom_wkt, "opath": list(result.opath), "cpath": list(result.cpath), "pgeom_wkt": pgeom_wkt, "indices": list(result.indices), "state": 1}
+            response_json = {"mgeom_wkt": mgeom_wkt, "opath": list(result.opath), "cpath": list(result.cpath), "pgeom_wkt": pgeom_wkt, "indices": list(result.indices), "offset": offset, "spdist": spdist, "state": 1}
             self.request.sendall(json.dumps(response_json))
         else:
             # print "Not matched"

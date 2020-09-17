@@ -23,11 +23,17 @@ print "Matched edge for each point: ", list(result.opath)
 print "Matched edge index ",list(result.indices)
 print "Matched geometry: ",result.mgeom.export_wkt()
 print "Matched point ", result.pgeom.export_wkt()
-print "candidates", list(result.candidates)
+print "number of links", len(result.cpath)
+print "number of points", len(result.opath)
 # print "offset", result.offset
 #
 # print "length", result.length
+offset = [c.offset for c in result.candidates]
+spdist = [c.spdist for c in result.candidates]
 print dir(result)
+print(len(result.candidates))
+print(offset)
+print(spdist)
 
 
 from fmm import GPSConfig,ResultConfig
