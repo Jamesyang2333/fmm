@@ -20,6 +20,5 @@ ENV PYTHONPATH /fmm/build/python:$PYTHONPATH
 RUN python -m pip install tornado==5.1.1
 RUN python -m pip install flask
 RUN python -m pip install numpy==1.8.0
-RUN cd /fmm/example/osm_example
-RUN python ubodt_data_gen.py
+RUN cd /fmm/example/osm_example && python ubodt_data_gen.py
 CMD cd /fmm/example/socket && python server.py -c fmm_config.json -p 1235
