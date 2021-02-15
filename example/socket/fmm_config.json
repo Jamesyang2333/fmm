@@ -1,13 +1,13 @@
 {
   "input": {
     "network": {
-      "file": "../data/harbin.tmp/edges.shp",
+      "file": "../data/chengdu.tmp/edges.shp",
       "id": "fid",
       "source": "u",
       "target": "v"
     },
     "ubodt":{
-      "file": "../data/harbin.tmp/ubodt-harbin.txt"
+      "file": "../data/chengdu.tmp/ubodt-chengdu.txt"
     }
   },
   "model": "fmm",

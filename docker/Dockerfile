@@ -14,10 +14,12 @@ RUN mkdir -p build && \
     cd build && \
     cmake .. && \
     make install
-EXPOSE 8080
+EXPOSE 1235
 ENV PATH /fmm/build:$PATH
 ENV PYTHONPATH /fmm/build/python:$PYTHONPATH
 RUN python -m pip install tornado==5.1.1
 RUN python -m pip install flask
 RUN python -m pip install numpy==1.8.0
-CMD cd /fmm/example/socket && python server.py -c stmatch_config.json
+RUN cd /fmm/example/osm_example
+RUN python ubodt_data_gen.py
+CMD cd /fmm/example/socket && python server.py -c fmm_config.json -p 1235
